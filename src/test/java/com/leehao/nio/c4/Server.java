@@ -13,6 +13,7 @@ import java.util.Iterator;
 public class Server {
 
     public static void main(String[] args) throws IOException {
+        // 使用NIO 来理解阻塞模式
         // 1. 创建 selector, 管理多个 channel
         Selector selector = Selector.open();
         ServerSocketChannel ssc = ServerSocketChannel.open();
