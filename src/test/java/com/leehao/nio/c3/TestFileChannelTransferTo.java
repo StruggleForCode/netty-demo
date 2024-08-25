@@ -8,10 +8,12 @@ import java.nio.channels.FileChannel;
 public class TestFileChannelTransferTo {
     public static void main(String[] args) {
         try (
+                // 读数据
                 FileChannel from = new FileInputStream("data.txt").getChannel();
+                // 写数据
                 FileChannel to = new FileOutputStream("to.txt").getChannel();
         ) {
-            // 效率高，底层会利用操作系统的零拷贝进行优化, 2g 数据
+            // 效率高，底层会利用操作系统的零拷贝进行优化, 传输数据时有上限的，一次最多传输2g 数据
             long size = from.size();
             // left 变量代表还剩余多少字节
             for (long left = size; left > 0; ) {

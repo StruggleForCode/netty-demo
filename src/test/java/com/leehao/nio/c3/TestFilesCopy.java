@@ -14,12 +14,12 @@ public class TestFilesCopy {
         Files.walk(Paths.get(source)).forEach(path -> {
             try {
                 String targetName = path.toString().replace(source, target);
-                // 是目录
                 if (Files.isDirectory(path)) {
+                    // 是目录
                     Files.createDirectory(Paths.get(targetName));
                 }
-                // 是普通文件
                 else if (Files.isRegularFile(path)) {
+                    // 是普通文件
                     Files.copy(path, Paths.get(targetName));
                 }
             } catch (IOException e) {

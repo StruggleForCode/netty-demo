@@ -1,14 +1,17 @@
 package com.leehao.nio.c3;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TestFilesWalkFileTree {
+    // 谨慎运行，草，把我mavan给删了
     public static void main(String[] args) throws IOException {
-//        Files.delete(Paths.get("D:\\Snipaste-1.16.2-x64 - 副本"));
-        Files.walkFileTree(Paths.get("D:\\Snipaste-1.16.2-x64 - 副本"), new SimpleFileVisitor<Path>() {
+//        Files.delete(Paths.get("/Users/leehao/devTools/apache-maven-3.8.7"));
+        Files.walkFileTree(Paths.get("/Users/leehao/devTools/apache-maven-3.8.7"), new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 Files.delete(file);
@@ -22,12 +25,13 @@ public class TestFilesWalkFileTree {
         });
     }
 
-    private static void m2() throws IOException {
+    @Test
+    public void m2() throws IOException {
         AtomicInteger jarCount = new AtomicInteger();
-        Files.walkFileTree(Paths.get("C:\\Program Files\\Java\\jdk1.8.0_91"), new SimpleFileVisitor<Path>(){
+        Files.walkFileTree(Paths.get("/Users/leehao/devTools/apache-maven-3.9.9"), new SimpleFileVisitor<Path>(){
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                if (file.toString().endsWith(".jar")) {
+                if (file.toString().endsWith(".xml")) {
                     System.out.println(file);
                     jarCount.incrementAndGet();
                 }
@@ -37,10 +41,12 @@ public class TestFilesWalkFileTree {
         System.out.println("jar count:" +jarCount);
     }
 
-    private static void m1() throws IOException {
+
+    @Test
+    public void m1() throws IOException {
         AtomicInteger dirCount = new AtomicInteger();
         AtomicInteger fileCount = new AtomicInteger();
-        Files.walkFileTree(Paths.get("C:\\Program Files\\Java\\jdk1.8.0_91"), new SimpleFileVisitor<Path>(){
+        Files.walkFileTree(Paths.get("/Users/leehao/devTools/apache-maven-3.9.9"), new SimpleFileVisitor<Path>(){
             @Override
             public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
                 System.out.println("====>"+dir);
