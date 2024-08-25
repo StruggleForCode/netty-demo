@@ -11,8 +11,8 @@ public class TestByteBufferExam {
              I'm zhangsan\n
              How are you?\n
          变成了下面的两个 byteBuffer (黏包，半包)
-             Hello,world\nI'm zhangsan\nHo
-             w are you?\n
+             Hello,world\nI'm zhangsan\nHo    黏包
+             w are you?\n                     半包
          现在要求你编写程序，将错乱的数据恢复成原始的按 \n 分隔的数据
          */
         ByteBuffer source = ByteBuffer.allocate(32);
@@ -23,6 +23,7 @@ public class TestByteBufferExam {
     }
 
     private static void split(ByteBuffer source) {
+        // 切换到读模式
         source.flip();
         for (int i = 0; i < source.limit(); i++) {
             // 找到一条完整消息
@@ -37,6 +38,7 @@ public class TestByteBufferExam {
                 ByteBufferUtil.debugAll(target);
             }
         }
+        // 切换到写模式，压缩，移到前面
         source.compact();
     }
 }

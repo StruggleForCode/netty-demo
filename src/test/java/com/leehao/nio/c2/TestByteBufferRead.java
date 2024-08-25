@@ -12,10 +12,12 @@ public class TestByteBufferRead {
         buffer.flip();
 
         // rewind 从头开始读
-        /*buffer.get(new byte[4]);
+        /*
+        buffer.get(new byte[4]);
         debugAll(buffer);
         buffer.rewind();
-        System.out.println((char)buffer.get());*/
+        System.out.println((char)buffer.get());
+         */
 
         // mark & reset
         // mark 做一个标记，记录 position 位置， reset 是将 position 重置到 mark 的位置
