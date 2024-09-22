@@ -13,7 +13,9 @@ public class WriteServer {
         ssc.configureBlocking(false);
         Selector selector = Selector.open();
         ssc.register(selector, SelectionKey.OP_ACCEPT);
+
         ssc.bind(new InetSocketAddress(8080));
+
         while (true) {
             selector.select();
             Iterator<SelectionKey> iter = selector.selectedKeys().iterator();
@@ -21,6 +23,7 @@ public class WriteServer {
                 SelectionKey key = iter.next();
                 iter.remove();
                 if (key.isAcceptable()) {
+                    // ServerSocketChannel 就一个scc, key.getChannel() 拿到的Channel就只有scc, 因此可以简化为下面这种形式
                     SocketChannel sc = ssc.accept();
                     sc.configureBlocking(false);
                     SelectionKey sckey = sc.register(selector, 0, null);
