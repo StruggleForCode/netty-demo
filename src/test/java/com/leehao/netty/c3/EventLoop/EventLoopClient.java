@@ -1,4 +1,4 @@
-package com.leehao.netty.c3;
+package com.leehao.netty.c3.EventLoop;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

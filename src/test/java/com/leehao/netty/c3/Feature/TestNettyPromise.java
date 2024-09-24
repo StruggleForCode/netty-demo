@@ -1,7 +1,6 @@
-package com.leehao.netty.c3;
+package com.leehao.netty.c3.Feature;
 
 import io.netty.channel.EventLoop;
-import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.util.concurrent.DefaultPromise;
 import lombok.extern.slf4j.Slf4j;
@@ -32,5 +31,4 @@ public class TestNettyPromise {
         log.debug("等待结果...");
         log.debug("结果是: {}", promise.get());
     }
-
 }

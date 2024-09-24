@@ -65,6 +65,14 @@ public class MultiThreadServer {
                 thread.start();
                 start = true;
             }
+            // 向队列中添加了任务，但是这个任务并没有立即执行
+//            queue.add(() -> {
+//                try {
+//                    sc.register(selector, SelectionKey.OP_READ, null); // boss
+//                } catch (ClosedChannelException e) {
+//                    e.printStackTrace();
+//                }
+//            });
             selector.wakeup(); // 唤醒 select 方法 boss
             sc.register(selector, SelectionKey.OP_READ, null); // boss
         }
