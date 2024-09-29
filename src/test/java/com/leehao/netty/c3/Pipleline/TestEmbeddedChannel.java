@@ -1,19 +1,12 @@
-package com.leehao.netty.c3;
+package com.leehao.netty.c3.Pipleline;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import io.netty.channel.embedded.EmbeddedChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-
-import java.nio.charset.Charset;
 
 @Slf4j
 public class TestEmbeddedChannel {
@@ -48,9 +41,9 @@ public class TestEmbeddedChannel {
         };
         EmbeddedChannel channel = new EmbeddedChannel(h1, h2, h3, h4);
         // 模拟入站操作
-//        channel.writeInbound(ByteBufAllocator.DEFAULT.buffer().writeBytes("hello".getBytes()));
+        channel.writeInbound(ByteBufAllocator.DEFAULT.buffer().writeBytes("hello".getBytes()));
         // 模拟出站操作
-        channel.writeOutbound(ByteBufAllocator.DEFAULT.buffer().writeBytes("world".getBytes()));
+        //channel.writeOutbound(ByteBufAllocator.DEFAULT.buffer().writeBytes("world".getBytes()));
 
     }
 }

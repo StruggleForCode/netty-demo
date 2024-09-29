@@ -22,8 +22,8 @@ public class TestNettyFuture {
                 return 70;
             }
         });
-//        log.debug("等待结果");
-//        log.debug("结果是 {}", future.get());
+        log.debug("等待结果");
+        log.debug("结果是 {}", future.get());
         future.addListener(new GenericFutureListener<Future<? super Integer>>(){
             @Override
             public void operationComplete(Future<? super Integer> future) throws Exception {
