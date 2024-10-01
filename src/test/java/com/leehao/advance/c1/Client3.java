@@ -50,7 +50,7 @@ public class Client3 {
                             ByteBuf buf = ctx.alloc().buffer();
                             char c = '0';
                             Random r = new Random();
-                            for (int i = 0; i < 10; i++) {
+                            for (int i = 0; i < 5; i++) {
                                 StringBuilder sb = makeString(c, r.nextInt(256) + 1);
                                 c++;
                                 buf.writeBytes(sb.toString().getBytes());
