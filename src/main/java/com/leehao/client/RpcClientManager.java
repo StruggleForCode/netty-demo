@@ -70,7 +70,7 @@ public class RpcClientManager {
         return (T) o;
     }
 
-    private static Channel channel = null;
+    private volatile static Channel channel = null;
     private static final Object LOCK = new Object();
 
     // 获取唯一的 channel 对象
@@ -106,7 +106,9 @@ public class RpcClientManager {
             }
         });
         try {
+            // 同步
             channel = bootstrap.connect("localhost", 8080).sync().channel();
+            // 异步
             channel.closeFuture().addListener(future -> {
                 group.shutdownGracefully();
             });

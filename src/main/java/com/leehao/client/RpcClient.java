@@ -37,13 +37,13 @@ public class RpcClient {
 
             ChannelFuture future = channel.writeAndFlush(new RpcRequestMessage(
                     1,
-                    "cn.itcast.server.service.HelloService",
+                    "com.leehao.server.service.HelloService",
                     "sayHello",
                     String.class,
                     new Class[]{String.class},
                     new Object[]{"张三"}
             )).addListener(promise -> {
-                if (!promise.isSuccess()) {
+                 if (!promise.isSuccess()) {
                     Throwable cause = promise.cause();
                     log.error("error", cause);
                 }

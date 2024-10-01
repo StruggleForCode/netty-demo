@@ -24,8 +24,8 @@ public class TestByteBuf {
                         ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
                             @Override
                             public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//                                ByteBuf buf = ctx.alloc().buffer();
-//                                log.debug("alloc buf {}", buf);
+                                ByteBuf buf = ctx.alloc().buffer();
+                                log.debug("alloc buf {}", buf);
 
                                 log.debug("receive buf {}", msg);
                                 System.out.println("");
